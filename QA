@@ -21,7 +21,6 @@ def BMI():
     userHeight = userHeight * userHeight
     
     print(userHeight)
-
     print("Enter your weight: ")
     userWeight = input()
     weightConvert = int(userWeight) *.45
