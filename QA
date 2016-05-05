@@ -1,0 +1,126 @@
+def main():
+    print("Run test:\n1 = BMI\n2 = Retire\n")
+    user = input()
+    if(user == 1):
+        BMI()
+        
+    elif(user == 2):
+        Retire()
+        
+    elif(user == 0):
+        testBMI()
+    else:
+        print("Please enter a vaild selection between 1 and 4\n")
+        main()
+
+def BMI():
+    print("Enter height in feet and inches (Ex. 6.4 is equal to 6 feet and 4 inches): ")
+    userHeight = input()
+    splitHeight = userHeight.split(".")
+    userHeight = ((int(splitHeight[0]) * 12) + int(splitHeight[1])) * .025
+    userHeight = userHeight * userHeight
+    
+    print(userHeight)
+
+    print("Enter your weight: ")
+    userWeight = input()
+    weightConvert = int(userWeight) *.45
+
+    ans = weightConvert/userHeight
+
+    if(ans < 18.5):
+        return "underweight"
+    elif(ans >= 18.5 and ans <= 24.9):
+        return "normal weight"
+    elif(ans >=25 and ans <= 29.9):
+        return "overweight"
+    else:
+        return "obesity"
+    print(ans)
+
+    
+def BmiTest(height, weight):
+    splitHeight = str(height).split(".")
+    userHeight = ((int(splitHeight[0]) * 12) + int(splitHeight[1])) * .025
+    userHeight = userHeight * userHeight
+    
+    weightConvert = int(weight) *.45
+
+    ans = float(weightConvert/userHeight)
+    print(ans)
+    if(ans < 18.5):
+        return "underweight"
+    elif(ans >= 18.5 and ans <= 24.9):
+        return "normal weight"
+    elif(ans >=25 and ans <= 29.9):
+        return "overweight"
+    else:
+        return "obesity"
+    
+    
+def Retire():
+    print("What is your current age?")
+    currAge = int(input())
+
+    print("What is your current annual salary?")
+    salary = input()
+
+    print("What is your percentage saved?")
+    savedPercent = input()
+    saved = float(salary) * float(savedPercent)
+    saved = float(saved) * 2
+    print(saved)
+    print("What is your savings goal?")
+    goal = input()
+    newSaved = saved
+    while(int(currAge) <= 100 and float(newSaved) < float(goal)):
+        currAge += 1
+        newSaved += saved
+
+    if(int(currAge) < 100):
+        print(currAge)
+        print(newSaved)
+    else:
+        print("You will not reach that savings")
+
+
+def RetireTest(currAge,salary,savedPercent,goal):
+
+    saved = float(salary) * float(savedPercent)
+    saved = float(saved) * 2
+    newSaved = saved
+    while(int(currAge) <= 100 and float(newSaved) < float(goal)):
+        currAge += 1
+        newSaved += saved
+
+    if(int(currAge) < 100):
+        print(currAge)
+        print(newSaved)
+        return true
+    else:
+        print("You will not reach that savings")
+        return false
+
+
+
+def testBMI():
+    print("Expecting overweight")
+    one = BmiTest(6.4,215)
+    if(one == "overweight"):
+        print("pass\n")
+    else:
+        print("fail\n")
+        
+    print("Expecting normal weight")
+    two = BmiTest(5.9, 140)
+    if(two == "normal weight"):
+        print("pass\n")
+    else:
+        print("fail\n")
+        
+    print("Expecting obesity")
+    three = BmiTest(4.11, 200)
+    if(three == "obesity"):
+        print("pass\n")
+    else:
+        print("fail\n")
